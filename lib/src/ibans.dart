@@ -115,7 +115,7 @@ int _calculateMod97(String iban) {
 /// Returns null if country doesn't support iban
 /// Throws [ValueException] if an invalid [countryCode] is provided
 Future<IbanSpec?> _getIbanSpec(String countryCode) async {
-  String filepath = "assets/ibans/" + countryCode[0];
+  String filepath = "assets/ibans/" + countryCode[0] + ".dat";
   var bytes = await _getBytes(filepath);
 
   var ibans = IbansSpecs.fromBuffer(bytes);
@@ -134,7 +134,7 @@ Future<IbanSpec?> _getIbanSpec(String countryCode) async {
 /// Returns null if bank not found or info not available
 /// Throws [ValueException] if there is no information is available for the bank with [countryCode] and [bankCode]
 Future<Bank> _getBank(String countryCode, String bankCode) async {
-  String filepath = "assets/banks/" + countryCode + bankCode.substring(0, 2);
+  String filepath = "assets/banks/AO00.dat";// + countryCode + bankCode.substring(0, 2);
   var bytes = await _getBytes(filepath);
 
   var banks = Banks.fromBuffer(bytes);
